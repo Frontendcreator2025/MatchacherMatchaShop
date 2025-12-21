@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matcha Delights - Productos Gourmet de Matcha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap");
+
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+
+      .font-body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      }
+
+      .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(76, 175, 80, 0.2);
+      }
+
+      .matcha-icon {
+        background: linear-gradient(135deg, #66bb6a, #43a047);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full font-body">
+    <div id="app-wrapper" class="w-full h-full overflow-auto">
+      <!-- Navigation -->
+      <nav id="nav" class="w-full py-4 px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="matcha-icon w-10 h-10">
+              <span class="text-2xl">🍵</span>
+            </div>
+            <h1 id="store-name" class="font-display text-2xl font-bold">
+              Matcha Delights
+            </h1>
+          </div>
+          <p id="tagline" class="font-body text-sm hidden md:block">
+            Experimenta el sabor auténtico del matcha
+          </p>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <header id="hero" class="gradient-bg py-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+          <h2
+            id="hero-title"
+            class="font-display text-5xl md:text-6xl font-bold mb-6"
+          >
+            Delicias de Matcha Artesanales
+          </h2>
+          <p
+            id="hero-description"
+            class="font-body text-xl mb-8 max-w-2xl mx-auto"
+          >
+            Descubre nuestra colección premium de productos de matcha: desde
+            chocolates suaves hasta helados cremosos, todo hecho con el mejor
+            matcha japonés
+          </p>
+          <button
+            id="cta-button"
+            class="font-body text-lg font-semibold px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+          >
+            Explorar Productos
+          </button>
+        </div>
+      </header>
+      <!-- Products Section -->
+      <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+          <h3
+            id="products-title"
+            class="font-display text-4xl font-bold text-center mb-12"
+          >
+            Nuestros Productos
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Chocolate Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🍫</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Chocolates de Matcha
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Chocolates artesanales con un toque refinado de matcha premium.
+                Perfectos para regalar o disfrutar.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Bestseller</span
+                >
+              </div>
+            </div>
+            <!-- Ice Cream Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🍦</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Helados Cremosos
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Helados ultra cremosos con auténtico sabor a matcha. Una
+                experiencia refrescante y deliciosa.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Popular</span
+                >
+              </div>
+            </div>
+            <!-- Cakes Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🍰</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Pasteles Gourmet
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Pasteles esponjosos y elegantes, elaborados con matcha de alta
+                calidad para ocasiones especiales.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Premium</span
+                >
+              </div>
+            </div>
+            <!-- Cupcakes Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🧁</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Cupcakes Deliciosos
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Cupcakes suaves con frosting de matcha. Perfectos para fiestas y
+                celebraciones.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Nuevo</span
+                >
+              </div>
+            </div>
+            <!-- Candy Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🍬</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Caramelos de Matcha
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Caramelos artesanales con sabor intenso a matcha. Dulces y
+                energizantes a la vez.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Único</span
+                >
+              </div>
+            </div>
+            <!-- Cereal Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🥣</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Cereales Energéticos
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Cereales crujientes con matcha para comenzar tu día con energía
+                y sabor excepcional.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Saludable</span
+                >
+              </div>
+            </div>
+            <!-- Tea Card -->
+            <div class="product-card rounded-2xl shadow-md p-6">
+              <div class="text-6xl mb-4 text-center">🍵</div>
+              <h4
+                class="product-name font-display text-2xl font-bold mb-3 text-center"
+              >
+                Tés de Matcha Premium
+              </h4>
+              <p class="product-description font-body text-center mb-4">
+                Tés de matcha auténtico de grado ceremonial. La forma
+                tradicional de disfrutar el matcha.
+              </p>
+              <div class="flex justify-center">
+                <span
+                  class="product-badge font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Tradicional</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Milk Section -->
+      <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto rounded-2xl shadow-lg p-8 md:p-12">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="text-8xl">🥛</div>
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="milk-title font-display text-3xl font-bold mb-4">
+                Leches de Matcha
+              </h3>
+              <p class="milk-description font-body text-lg mb-6">
+                Leches vegetales y lácteas infusionadas con matcha premium.
+                Perfectas para batidos, café o simplemente disfrutar frías.
+              </p>
+              <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <span
+                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Sin Lactosa</span
+                >
+                <span
+                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Orgánico</span
+                >
+                <span
+                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  >Vegano</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section class="py-16 px-6">
+        <div class="max-w-4xl mx-auto rounded-2xl shadow-lg p-8 md:p-12">
+          <h3
+            class="contact-title font-display text-3xl font-bold text-center mb-8"
+          >
+            Visítanos
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3 mb-6"
+              >
+                <span class="text-3xl">📍</span>
+                <div>
+                  <h4
+                    class="contact-label font-body font-semibold text-lg mb-2"
+                  >
+                    Dirección
+                  </h4>
+                  <p class="contact-info font-body">
+                    Toltecas 166<br />
+                    San Pedro de los Pinos<br />
+                    01180, CDMX
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3 mb-6"
+              >
+                <span class="text-3xl">📞</span>
+                <div>
+                  <h4
+                    class="contact-label font-body font-semibold text-lg mb-2"
+                  >
+                    Teléfono
+                  </h4>
+                  <p class="contact-info font-body">
+                    <a
+                      href="tel:5610677516"
+                      class="contact-link hover:underline transition-all"
+                      >56 1067 7516</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer id="footer" class="py-8 px-6 mt-16">
+        <div class="max-w-7xl mx-auto text-center">
+          <div class="matcha-icon w-12 h-12 mx-auto mb-4">
+            <span class="text-3xl">🍵</span>
+          </div>
+          <p class="footer-text font-body mb-2">
+            © 2024 Matchacher Matcha Shop. Todos los derechos reservados.
+          </p>
+          <p class="footer-subtext font-body text-sm">
+            Hecho con amor y el mejor matcha japonés
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const defaultConfig = {
+        background_color: "#f1f8e9",
+        surface_color: "#ffffff",
+        text_color: "#2e7d32",
+        primary_action_color: "#4caf50",
+        secondary_action_color: "#66bb6a",
+        font_family: "Inter",
+        font_size: 16,
+        store_name: "Matchacher Matcha Shop",
+        tagline: "Experimenta el sabor auténtico del matcha",
+        hero_title: "Delicias de Matcha Artesanales",
+        hero_description:
+          "Descubre nuestra colección premium de productos de matcha: desde chocolates suaves hasta helados cremosos, todo hecho con el mejor matcha japonés",
+        cta_button: "Explorar Productos",
+        products_title: "Nuestros Productos",
+      };
+
+      async function onConfigChange(config) {
+        const backgroundColor =
+          config.background_color || defaultConfig.background_color;
+        const surfaceColor =
+          config.surface_color || defaultConfig.surface_color;
+        const textColor = config.text_color || defaultConfig.text_color;
+        const primaryActionColor =
+          config.primary_action_color || defaultConfig.primary_action_color;
+        const secondaryActionColor =
+          config.secondary_action_color || defaultConfig.secondary_action_color;
+        const fontFamily = config.font_family || defaultConfig.font_family;
+        const fontSize = config.font_size || defaultConfig.font_size;
+
+        // Apply background colors
+        document.getElementById("app-wrapper").style.backgroundColor =
+          backgroundColor;
+        document.getElementById("nav").style.backgroundColor = surfaceColor;
+        document.getElementById("footer").style.backgroundColor = surfaceColor;
+
+        // Apply text colors
+        document.getElementById("store-name").style.color = textColor;
+        document.getElementById("tagline").style.color = textColor;
+        document.getElementById("hero-title").style.color = textColor;
+        document.getElementById("hero-description").style.color = textColor;
+        document.getElementById("products-title").style.color = textColor;
+
+        const productNames = document.querySelectorAll(".product-name");
+        productNames.forEach((el) => (el.style.color = textColor));
+
+        const productDescriptions = document.querySelectorAll(
+          ".product-description"
+        );
+        productDescriptions.forEach((el) => (el.style.color = textColor));
+
+        document.querySelector(".milk-title").style.color = textColor;
+        document.querySelector(".milk-description").style.color = textColor;
+        document.querySelector(".contact-title").style.color = textColor;
+        document
+          .querySelectorAll(".contact-label")
+          .forEach((el) => (el.style.color = textColor));
+        document
+          .querySelectorAll(".contact-info")
+          .forEach((el) => (el.style.color = textColor));
+        document
+          .querySelectorAll(".contact-link")
+          .forEach((el) => (el.style.color = primaryActionColor));
+        document.querySelector(".footer-text").style.color = textColor;
+        document.querySelector(".footer-subtext").style.color = textColor;
+
+        // Apply primary action color
+        const ctaButton = document.getElementById("cta-button");
+        ctaButton.style.backgroundColor = primaryActionColor;
+        ctaButton.style.color = surfaceColor;
+
+        // Apply secondary action color to cards and badges
+        const productCards = document.querySelectorAll(".product-card");
+        productCards.forEach((card) => {
+          card.style.backgroundColor = surfaceColor;
+          card.style.borderColor = secondaryActionColor;
+          card.style.borderWidth = "2px";
+          card.style.borderStyle = "solid";
+        });
+
+        const productBadges = document.querySelectorAll(".product-badge");
+        productBadges.forEach((badge) => {
+          badge.style.backgroundColor = secondaryActionColor;
+          badge.style.color = surfaceColor;
+        });
+
+        const badgeItems = document.querySelectorAll(".badge-item");
+        badgeItems.forEach((badge) => {
+          badge.style.backgroundColor = secondaryActionColor;
+          badge.style.color = surfaceColor;
+        });
+
+        const milkSection = document.querySelector(
+          "section:nth-of-type(2) > div > div"
+        );
+        milkSection.style.backgroundColor = surfaceColor;
+        milkSection.style.borderColor = secondaryActionColor;
+        milkSection.style.borderWidth = "2px";
+        milkSection.style.borderStyle = "solid";
+
+        const contactSection = document.querySelector(
+          "section:nth-of-type(3) > div"
+        );
+        contactSection.style.backgroundColor = surfaceColor;
+        contactSection.style.borderColor = secondaryActionColor;
+        contactSection.style.borderWidth = "2px";
+        contactSection.style.borderStyle = "solid";
+
+        // Apply fonts with proper stacking
+        const baseFontStack = "system-ui, -apple-system, sans-serif";
+        const allTextElements = document.querySelectorAll(
+          "body, h1, h2, h3, h4, p, span, button"
+        );
+        allTextElements.forEach((el) => {
+          el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+        });
+
+        // Apply font sizes proportionally
+        document.getElementById("store-name").style.fontSize = `${
+          fontSize * 1.5
+        }px`;
+        document.getElementById("tagline").style.fontSize = `${
+          fontSize * 0.875
+        }px`;
+        document.getElementById("hero-title").style.fontSize = `${
+          fontSize * 3
+        }px`;
+        document.getElementById("hero-description").style.fontSize = `${
+          fontSize * 1.25
+        }px`;
+        document.getElementById("cta-button").style.fontSize = `${
+          fontSize * 1.125
+        }px`;
+        document.getElementById("products-title").style.fontSize = `${
+          fontSize * 2
+        }px`;
+
+        productNames.forEach(
+          (el) => (el.style.fontSize = `${fontSize * 1.5}px`)
+        );
+        productDescriptions.forEach(
+          (el) => (el.style.fontSize = `${fontSize}px`)
+        );
+        productBadges.forEach(
+          (el) => (el.style.fontSize = `${fontSize * 0.875}px`)
+        );
+
+        document.querySelector(".milk-title").style.fontSize = `${
+          fontSize * 1.875
+        }px`;
+        document.querySelector(".milk-description").style.fontSize = `${
+          fontSize * 1.125
+        }px`;
+        badgeItems.forEach(
+          (el) => (el.style.fontSize = `${fontSize * 0.875}px`)
+        );
+        document.querySelector(".contact-title").style.fontSize = `${
+          fontSize * 1.875
+        }px`;
+        document
+          .querySelectorAll(".contact-label")
+          .forEach((el) => (el.style.fontSize = `${fontSize * 1.125}px`));
+        document
+          .querySelectorAll(".contact-info")
+          .forEach((el) => (el.style.fontSize = `${fontSize}px`));
+        document.querySelector(".footer-text").style.fontSize = `${fontSize}px`;
+        document.querySelector(".footer-subtext").style.fontSize = `${
+          fontSize * 0.875
+        }px`;
+
+        // Update text content
+        document.getElementById("store-name").textContent =
+          config.store_name || defaultConfig.store_name;
+        document.getElementById("tagline").textContent =
+          config.tagline || defaultConfig.tagline;
+        document.getElementById("hero-title").textContent =
+          config.hero_title || defaultConfig.hero_title;
+        document.getElementById("hero-description").textContent =
+          config.hero_description || defaultConfig.hero_description;
+        document.getElementById("cta-button").textContent =
+          config.cta_button || defaultConfig.cta_button;
+        document.getElementById("products-title").textContent =
+          config.products_title || defaultConfig.products_title;
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [
+            {
+              get: () =>
+                config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              },
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              },
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              },
+            },
+            {
+              get: () =>
+                config.primary_action_color ||
+                defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              },
+            },
+            {
+              get: () =>
+                config.secondary_action_color ||
+                defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              },
+            },
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            },
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            },
+          },
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          ["store_name", config.store_name || defaultConfig.store_name],
+          ["tagline", config.tagline || defaultConfig.tagline],
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          [
+            "hero_description",
+            config.hero_description || defaultConfig.hero_description,
+          ],
+          ["cta_button", config.cta_button || defaultConfig.cta_button],
+          [
+            "products_title",
+            config.products_title || defaultConfig.products_title,
+          ],
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues,
+        });
+      }
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9b1656ee2238d2eb',t:'MTc2NjMwOTIwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
