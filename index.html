@@ -41,6 +41,20 @@
         align-items: center;
         justify-content: center;
       }
+
+      .mobile-menu-closed {
+        max-height: 0;
+        opacity: 0;
+      }
+
+      .mobile-menu-open {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
     <style>
       @view-transition {
@@ -52,37 +66,112 @@
   <body class="h-full font-body">
     <div id="app-wrapper" class="w-full h-full overflow-auto">
       <!-- Navigation -->
-      <nav id="nav" class="w-full py-4 px-6 shadow-sm">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-          <div class="flex items-center space-x-3">
-            <div class="matcha-icon w-10 h-10">
-              <span class="text-2xl">🍵</span>
+      <nav id="nav" class="w-full py-4 px-6 shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/1.png"
+                alt="Matchacher Matcha Shop Logo"
+                class="w-16 h-16 md:w-24 md:h-24 object-contain"
+                onerror="this.style.display='none'; this.alt='Logo failed to load';"
+              />
+              <h1
+                id="store-name"
+                class="font-display text-xl md:text-2xl font-bold"
+              >
+                Matcha Delights
+              </h1>
             </div>
-            <h1 id="store-name" class="font-display text-2xl font-bold">
-              Matcha Delights
-            </h1>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+              <a
+                href="#productos"
+                class="nav-link font-body text-sm font-medium hover:underline transition-all"
+                >Productos</a
+              >
+              <a
+                href="#galeria"
+                class="nav-link font-body text-sm font-medium hover:underline transition-all"
+                >Galería</a
+              >
+              <a
+                href="#compra"
+                class="nav-link font-body text-sm font-medium hover:underline transition-all"
+                >Comprar</a
+              >
+              <a
+                href="#contacto"
+                class="nav-link font-body text-sm font-medium hover:underline transition-all"
+                >Contacto</a
+              >
+            </div>
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden text-3xl focus:outline-none transition-transform hover:scale-110"
+            >
+              ���
+            </button>
           </div>
-          <p id="tagline" class="font-body text-sm hidden md:block">
-            Experimenta el sabor auténtico del matcha
-          </p>
+          <!-- Mobile Menu -->
+          <div
+            id="mobile-menu"
+            class="mobile-menu-closed md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+          >
+            <div class="pt-4 pb-2 space-y-2">
+              <a
+                href="#productos"
+                class="mobile-nav-link block px-4 py-3 font-body text-base font-medium rounded-lg transition-all hover:scale-105"
+              >
+                🍵 Productos
+              </a>
+              <a
+                href="#galeria"
+                class="mobile-nav-link block px-4 py-3 font-body text-base font-medium rounded-lg transition-all hover:scale-105"
+              >
+                📸 Galería
+              </a>
+              <a
+                href="#compra"
+                class="mobile-nav-link block px-4 py-3 font-body text-base font-medium rounded-lg transition-all hover:scale-105"
+              >
+                💳 Comprar
+              </a>
+              <a
+                href="#contacto"
+                class="mobile-nav-link block px-4 py-3 font-body text-base font-medium rounded-lg transition-all hover:scale-105"
+              >
+                📞 Contacto
+              </a>
+              <a
+                href="#redes"
+                class="mobile-nav-link block px-4 py-3 font-body text-base font-medium rounded-lg transition-all hover:scale-105"
+              >
+                🌟 Redes Sociales
+              </a>
+            </div>
+          </div>
         </div>
       </nav>
       <!-- Hero Section -->
-      <header id="hero" class="gradient-bg py-20 px-6">
+      <header id="hero" class="py-20 px-6" style="background-color: #9cb425">
         <div class="max-w-7xl mx-auto text-center">
           <h2
             id="hero-title"
             class="font-display text-5xl md:text-6xl font-bold mb-6"
+            style="color: #ffffff"
           >
             Delicias de Matcha Artesanales
           </h2>
           <p
             id="hero-description"
             class="font-body text-xl mb-8 max-w-2xl mx-auto"
+            style="color: #ffffff"
           >
             Descubre nuestra colección premium de productos de matcha: desde
             chocolates suaves hasta helados cremosos, todo hecho con el mejor
-            matcha japonés
+            matcha japon��s
           </p>
           <button
             id="cta-button"
@@ -93,11 +182,11 @@
         </div>
       </header>
       <!-- Products Section -->
-      <section class="py-16 px-6">
+      <section id="productos" class="py-10 md:py-16 px-4 md:px-6">
         <div class="max-w-7xl mx-auto">
           <h3
             id="products-title"
-            class="font-display text-4xl font-bold text-center mb-12"
+            class="font-display text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12"
           >
             Nuestros Productos
           </h3>
@@ -142,7 +231,7 @@
             </div>
             <!-- Cakes Card -->
             <div class="product-card rounded-2xl shadow-md p-6">
-              <div class="text-6xl mb-4 text-center">🍰</div>
+              <div class="text-6xl mb-4 text-center">���</div>
               <h4
                 class="product-name font-display text-2xl font-bold mb-3 text-center"
               >
@@ -238,30 +327,156 @@
           </div>
         </div>
       </section>
+      <!-- Events Slider Section -->
+      <section
+        class="py-10 md:py-16 px-4 md:px-6"
+        style="background-color: #9cb425"
+      >
+        <div class="max-w-7xl mx-auto">
+          <h3
+            class="events-title font-display text-2xl md:text-4xl font-bold text-center mb-3 md:mb-4"
+            style="color: #ffffff"
+          >
+            🎉 Eventos
+          </h3>
+          <p
+            class="events-subtitle font-body text-base md:text-xl text-center mb-4 md:mb-8"
+            style="color: #ffffff"
+          >
+            Ceremonias del Té Matcha y Experiencias Únicas
+          </p>
+          <div
+            class="relative overflow-hidden rounded-xl md:rounded-3xl shadow-2xl"
+            style="height: 200px"
+          >
+            <div
+              id="slider-container"
+              class="flex transition-transform duration-500 ease-in-out h-full"
+            >
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(1).jpg"
+                  alt="Evento de Ceremonia del Té 1"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(2).jpg"
+                  alt="Evento de Ceremonia del Té 2"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(3).jpg"
+                  alt="Evento de Ceremonia del Té 3"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(4).jpg"
+                  alt="Evento de Ceremonia del Té 4"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(5).jpg"
+                  alt="Evento de Ceremonia del Té 5"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+              <div class="min-w-full h-full flex-shrink-0">
+                <img
+                  src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/ceremonia%20del%20te%20(6).jpg"
+                  alt="Evento de Ceremonia del Té 6"
+                  class="w-full h-full object-contain md:object-cover"
+                  onerror="this.style.display='none'; this.alt='Image failed to load';"
+                />
+              </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <button
+              id="slider-prev"
+              class="absolute left-1 md:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center shadow-lg transition-all hover:scale-110 z-10 text-lg md:text-2xl font-bold"
+            >
+              ‹
+            </button>
+            <button
+              id="slider-next"
+              class="absolute right-1 md:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center shadow-lg transition-all hover:scale-110 z-10 text-lg md:text-2xl font-bold"
+            >
+              ›
+            </button>
+            <!-- Dots Indicator -->
+            <div
+              class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 md:gap-2 z-10"
+            >
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="0"
+              ></button>
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="1"
+              ></button>
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="2"
+              ></button>
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="3"
+              ></button>
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="4"
+              ></button>
+              <button
+                class="slider-dot w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"
+                data-index="5"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Milk Section -->
-      <section class="py-16 px-6">
-        <div class="max-w-5xl mx-auto rounded-2xl shadow-lg p-8 md:p-12">
-          <div class="flex flex-col md:flex-row items-center gap-8">
-            <div class="text-8xl">🥛</div>
+      <section class="py-10 md:py-16 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto rounded-2xl shadow-lg p-6 md:p-8 lg:p-12">
+          <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+            <div class="text-6xl md:text-8xl">🥛</div>
             <div class="flex-1 text-center md:text-left">
-              <h3 class="milk-title font-display text-3xl font-bold mb-4">
+              <h3
+                class="milk-title font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4"
+              >
                 Leches de Matcha
               </h3>
-              <p class="milk-description font-body text-lg mb-6">
+              <p
+                class="milk-description font-body text-base md:text-lg mb-4 md:mb-6"
+              >
                 Leches vegetales y lácteas infusionadas con matcha premium.
                 Perfectas para batidos, café o simplemente disfrutar frías.
               </p>
-              <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+              <div
+                class="flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start"
+              >
                 <span
-                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  class="badge-item font-body text-xs md:text-sm font-semibold px-3 md:px-4 py-1.5 md:py-2 rounded-full"
                   >Sin Lactosa</span
                 >
                 <span
-                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
-                  >Orgánico</span
+                  class="badge-item font-body text-xs md:text-sm font-semibold px-3 md:px-4 py-1.5 md:py-2 rounded-full"
+                  >Org��nico</span
                 >
                 <span
-                  class="badge-item font-body text-sm font-semibold px-4 py-2 rounded-full"
+                  class="badge-item font-body text-xs md:text-sm font-semibold px-3 md:px-4 py-1.5 md:py-2 rounded-full"
                   >Vegano</span
                 >
               </div>
@@ -269,51 +484,260 @@
           </div>
         </div>
       </section>
-      <!-- Contact Section -->
-      <section class="py-16 px-6">
-        <div class="max-w-4xl mx-auto rounded-2xl shadow-lg p-8 md:p-12">
+      <!-- Gallery Section -->
+      <section
+        id="galeria"
+        class="py-10 md:py-16 px-4 md:px-6"
+        style="background-color: #9cb425"
+      >
+        <div class="max-w-7xl mx-auto">
           <h3
-            class="contact-title font-display text-3xl font-bold text-center mb-8"
+            class="gallery-title font-display text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10"
           >
-            Visítanos
+            📸 Galería de Productos
           </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          >
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(0)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(1).jpg"
+                alt="Producto de Matcha 1"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(1)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(2).jpg"
+                alt="Producto de Matcha 2"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(2)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(3).jpg"
+                alt="Producto de Matcha 3"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(3)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(4).jpg"
+                alt="Producto de Matcha 4"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(4)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(5).jpg"
+                alt="Producto de Matcha 5"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(5)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(6).jpg"
+                alt="Producto de Matcha 6"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(6)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(7).jpg"
+                alt="Producto de Matcha 7"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(7)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(8).jpg"
+                alt="Producto de Matcha 8"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(8)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(9).jpg"
+                alt="Producto de Matcha 9"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(9)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(10).jpg"
+                alt="Producto de Matcha 10"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(10)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(11).jpg"
+                alt="Producto de Matcha 11"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+            <div
+              class="gallery-item rounded-2xl overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onclick="openGalleryModal(11)"
+              style="aspect-ratio: 4/5"
+            >
+              <img
+                src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(12).jpg"
+                alt="Producto de Matcha 12"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.alt='Image failed to load';"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery Modal -->
+      <div
+        id="gallery-modal"
+        class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4"
+        onclick="closeGalleryModal()"
+      >
+        <button
+          class="gallery-close-btn absolute top-4 right-4 text-white text-4xl font-bold hover:scale-110 transition-transform z-10"
+        >
+          ✕
+        </button>
+        <img
+          id="gallery-modal-img"
+          src=""
+          alt="Vista ampliada"
+          class="max-w-full max-h-full object-contain rounded-lg"
+        />
+      </div>
+      <!-- Purchase Info Section -->
+      <section id="compra" class="py-10 md:py-16 px-4 md:px-6">
+        <div
+          class="max-w-5xl mx-auto rounded-2xl shadow-lg p-6 md:p-8 lg:p-12"
+          style="background-color: #9cb425"
+        >
+          <h3
+            class="purchase-title font-display text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8"
+            style="color: #ffffff"
+          >
+            💳 Información de Compra
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center md:text-left">
               <div
-                class="flex items-start justify-center md:justify-start gap-3 mb-6"
+                class="flex items-start justify-center md:justify-start gap-3"
               >
-                <span class="text-3xl">📍</span>
+                <span class="text-2xl md:text-3xl">💰</span>
                 <div>
                   <h4
-                    class="contact-label font-body font-semibold text-lg mb-2"
+                    class="purchase-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
                   >
-                    Dirección
+                    Precio
                   </h4>
-                  <p class="contact-info font-body">
-                    Toltecas 166<br />
-                    San Pedro de los Pinos<br />
-                    01180, CDMX
+                  <p
+                    class="purchase-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    Comercio Justo
                   </p>
                 </div>
               </div>
             </div>
             <div class="text-center md:text-left">
               <div
-                class="flex items-start justify-center md:justify-start gap-3 mb-6"
+                class="flex items-start justify-center md:justify-start gap-3"
               >
-                <span class="text-3xl">📞</span>
+                <span class="text-2xl md:text-3xl">💳</span>
                 <div>
                   <h4
-                    class="contact-label font-body font-semibold text-lg mb-2"
+                    class="purchase-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
                   >
-                    Teléfono
+                    Pago
                   </h4>
-                  <p class="contact-info font-body">
-                    <a
-                      href="tel:5610677516"
-                      class="contact-link hover:underline transition-all"
-                      >56 1067 7516</a
-                    >
+                  <p
+                    class="purchase-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    Efectivo o transferencia NU<br />
+                    CLABE interbancaria disponible
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3"
+              >
+                <span class="text-2xl md:text-3xl">🚴</span>
+                <div>
+                  <h4
+                    class="purchase-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
+                  >
+                    Entrega
+                  </h4>
+                  <p
+                    class="purchase-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    En bicicleta a domicilio<br />
+                    o punto medio en metro
                   </p>
                 </div>
               </div>
@@ -321,27 +745,263 @@
           </div>
         </div>
       </section>
-      <!-- Footer -->
-      <footer id="footer" class="py-8 px-6 mt-16">
-        <div class="max-w-7xl mx-auto text-center">
-          <div class="matcha-icon w-12 h-12 mx-auto mb-4">
-            <span class="text-3xl">🍵</span>
+      <!-- Contact Section -->
+      <section id="contacto" class="py-10 md:py-16 px-4 md:px-6">
+        <div
+          class="max-w-5xl mx-auto rounded-2xl shadow-lg p-6 md:p-8 lg:p-12"
+          style="background-color: #9cb425"
+        >
+          <h3
+            class="contact-title font-display text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8"
+            style="color: #ffffff"
+          >
+            Información de Contacto
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3"
+              >
+                <span class="text-2xl md:text-3xl">📧</span>
+                <div>
+                  <h4
+                    class="contact-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
+                  >
+                    Email
+                  </h4>
+                  <p
+                    class="contact-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    <a
+                      href="mailto:hola@matchacher.com"
+                      class="contact-link hover:underline transition-all"
+                      style="color: #ffffff"
+                      >hola@matchacher.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3"
+              >
+                <span class="text-2xl md:text-3xl">📱</span>
+                <div>
+                  <h4
+                    class="contact-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
+                  >
+                    WhatsApp
+                  </h4>
+                  <p
+                    class="contact-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    <a
+                      href="https://wa.me/525610677516"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="contact-link hover:underline transition-all"
+                      style="color: #ffffff"
+                      >56 1067 7516</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <div
+                class="flex items-start justify-center md:justify-start gap-3"
+              >
+                <span class="text-2xl md:text-3xl">📍</span>
+                <div>
+                  <h4
+                    class="contact-label font-body font-semibold text-base md:text-lg mb-1 md:mb-2"
+                    style="color: #ffffff"
+                  >
+                    Dirección
+                  </h4>
+                  <p
+                    class="contact-info font-body text-sm md:text-base"
+                    style="color: #ffffff"
+                  >
+                    Toltecas 166<br />
+                    San Pedro de los Pinos<br />
+                    CDMX 01180
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="footer-text font-body mb-2">
-            © 2024 Matchacher Matcha Shop. Todos los derechos reservados.
+        </div>
+      </section>
+      <!-- Social Media Section -->
+      <section id="redes" class="py-10 md:py-16 px-4 md:px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h3
+            class="social-title font-display text-2xl md:text-3xl font-bold mb-6 md:mb-8"
+          >
+            Síguenos en Redes Sociales
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+            <a
+              href="https://facebook.com/matchacher"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
+              <span class="text-xl md:text-2xl">📘</span>
+              <span class="font-body font-semibold text-sm md:text-base"
+                >Facebook</span
+              >
+            </a>
+            <a
+              href="https://instagram.com/matchacher"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
+              <span class="text-xl md:text-2xl">📷</span>
+              <span class="font-body font-semibold text-sm md:text-base"
+                >Instagram</span
+              >
+            </a>
+            <a
+              href="https://tiktok.com/@matchacher"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
+              <span class="text-xl md:text-2xl">🎵</span>
+              <span class="font-body font-semibold text-sm md:text-base"
+                >TikTok</span
+              >
+            </a>
+            <a
+              href="https://pinterest.com/matchacher"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
+              <span class="text-xl md:text-2xl">📌</span>
+              <span class="font-body font-semibold text-sm md:text-base"
+                >Pinterest</span
+              >
+            </a>
+            <a
+              href="https://github.com/matchacher"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
+              <span class="text-xl md:text-2xl">���</span>
+              <span class="font-body font-semibold text-sm md:text-base"
+                >GitHub</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer id="footer" class="py-6 md:py-8 px-4 md:px-6 mt-10 md:mt-16">
+        <div class="max-w-7xl mx-auto text-center">
+          <img
+            src="https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/1.png"
+            alt="Matchacher Matcha Shop Logo"
+            class="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto mb-3 md:mb-4"
+            onerror="this.style.display='none'; this.alt='Logo failed to load';"
+          />
+          <p class="footer-text font-body text-sm md:text-base mb-1 md:mb-2">
+            �� 2024 Matchacher Matcha Shop. Todos los derechos reservados.
           </p>
-          <p class="footer-subtext font-body text-sm">
+          <p class="footer-subtext font-body text-xs md:text-sm">
             Hecho con amor y el mejor matcha japonés
           </p>
         </div>
       </footer>
+      <!-- Chatbot Button -->
+      <button
+        id="chatbot-toggle"
+        class="fixed bottom-6 right-6 w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl md:text-3xl transition-all duration-300 hover:scale-110 z-50"
+      >
+        💬
+      </button>
+      <!-- Chatbot Window -->
+      <div
+        id="chatbot-window"
+        class="fixed bottom-24 right-6 w-80 md:w-96 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform scale-0 origin-bottom-right z-50"
+        style="max-height: 500px"
+      >
+        <div id="chatbot-header" class="p-4 flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🍵</span>
+            <div>
+              <h4 class="chatbot-header-title font-body font-bold text-base">
+                Matcha Bot
+              </h4>
+              <p class="chatbot-header-status font-body text-xs">En l��nea</p>
+            </div>
+          </div>
+          <button
+            id="chatbot-close"
+            class="text-2xl hover:scale-110 transition-transform"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="chatbot-messages"
+          class="p-4 overflow-y-auto"
+          style="height: 320px"
+        >
+          <div class="bot-message mb-3 flex gap-2">
+            <span class="text-xl">🍵</span>
+            <div
+              class="bot-message-bubble rounded-2xl rounded-tl-none px-4 py-2 max-w-xs"
+            >
+              <p class="bot-message-text font-body text-sm">
+                ������Hola! Soy Matcha Bot 🍵 ¿En qué puedo ayudarte hoy?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="chatbot-options" class="p-4 border-t space-y-2">
+          <button
+            class="chatbot-option w-full text-left px-4 py-2 rounded-lg font-body text-sm transition-all hover:scale-105"
+            data-option="productos"
+          >
+            🛍️ Ver productos
+          </button>
+          <button
+            class="chatbot-option w-full text-left px-4 py-2 rounded-lg font-body text-sm transition-all hover:scale-105"
+            data-option="compra"
+          >
+            💳 Cómo comprar
+          </button>
+          <button
+            class="chatbot-option w-full text-left px-4 py-2 rounded-lg font-body text-sm transition-all hover:scale-105"
+            data-option="contacto"
+          >
+            📞 Información de contacto
+          </button>
+          <button
+            class="chatbot-option w-full text-left px-4 py-2 rounded-lg font-body text-sm transition-all hover:scale-105"
+            data-option="horario"
+          >
+            🕐 Horarios de atención
+          </button>
+        </div>
+      </div>
     </div>
     <script>
       const defaultConfig = {
         background_color: "#f1f8e9",
         surface_color: "#ffffff",
-        text_color: "#2e7d32",
-        primary_action_color: "#4caf50",
+        text_color: "#264700",
+        primary_action_color: "#264700",
         secondary_action_color: "#66bb6a",
         font_family: "Inter",
         font_size: 16,
@@ -375,10 +1035,24 @@
 
         // Apply text colors
         document.getElementById("store-name").style.color = textColor;
-        document.getElementById("tagline").style.color = textColor;
-        document.getElementById("hero-title").style.color = textColor;
-        document.getElementById("hero-description").style.color = textColor;
+        document.getElementById("hero-title").style.color = "#ffffff";
+        document.getElementById("hero-description").style.color = "#ffffff";
         document.getElementById("products-title").style.color = textColor;
+
+        // Apply colors to navigation links
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => (link.style.color = textColor));
+
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+        mobileNavLinks.forEach((link) => {
+          link.style.backgroundColor = surfaceColor;
+          link.style.color = textColor;
+          link.style.borderColor = secondaryActionColor;
+          link.style.borderWidth = "1px";
+          link.style.borderStyle = "solid";
+        });
+
+        document.getElementById("mobile-menu-btn").style.color = textColor;
 
         const productNames = document.querySelectorAll(".product-name");
         productNames.forEach((el) => (el.style.color = textColor));
@@ -390,16 +1064,34 @@
 
         document.querySelector(".milk-title").style.color = textColor;
         document.querySelector(".milk-description").style.color = textColor;
-        document.querySelector(".contact-title").style.color = textColor;
+        document.querySelector(".events-title").style.color = "#ffffff";
+        document.querySelector(".events-subtitle").style.color = "#ffffff";
+        document.querySelector(".gallery-title").style.color = "#ffffff";
+
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        galleryItems.forEach((item) => {
+          item.style.borderColor = secondaryActionColor;
+          item.style.borderWidth = "2px";
+          item.style.borderStyle = "solid";
+        });
+
+        document.querySelector(".purchase-title").style.color = "#ffffff";
+        document
+          .querySelectorAll(".purchase-label")
+          .forEach((el) => (el.style.color = "#ffffff"));
+        document
+          .querySelectorAll(".purchase-info")
+          .forEach((el) => (el.style.color = "#ffffff"));
+        document.querySelector(".contact-title").style.color = "#ffffff";
         document
           .querySelectorAll(".contact-label")
-          .forEach((el) => (el.style.color = textColor));
+          .forEach((el) => (el.style.color = "#ffffff"));
         document
           .querySelectorAll(".contact-info")
-          .forEach((el) => (el.style.color = textColor));
+          .forEach((el) => (el.style.color = "#ffffff"));
         document
           .querySelectorAll(".contact-link")
-          .forEach((el) => (el.style.color = primaryActionColor));
+          .forEach((el) => (el.style.color = "#ffffff"));
         document.querySelector(".footer-text").style.color = textColor;
         document.querySelector(".footer-subtext").style.color = textColor;
 
@@ -429,6 +1121,56 @@
           badge.style.color = surfaceColor;
         });
 
+        document.querySelector(".social-title").style.color = textColor;
+        document.querySelectorAll(".social-link").forEach((link) => {
+          link.style.backgroundColor = surfaceColor;
+          link.style.color = textColor;
+          link.style.borderColor = secondaryActionColor;
+          link.style.borderWidth = "2px";
+          link.style.borderStyle = "solid";
+        });
+
+        // Apply chatbot colors
+        document.getElementById("chatbot-toggle").style.backgroundColor =
+          primaryActionColor;
+        document.getElementById("chatbot-toggle").style.color = surfaceColor;
+        document.getElementById("chatbot-header").style.backgroundColor =
+          primaryActionColor;
+        document.querySelector(".chatbot-header-title").style.color =
+          surfaceColor;
+        document.querySelector(".chatbot-header-status").style.color =
+          surfaceColor;
+        document.getElementById("chatbot-close").style.color = surfaceColor;
+        document.getElementById("chatbot-window").style.backgroundColor =
+          backgroundColor;
+        document.getElementById("chatbot-options").style.borderColor =
+          secondaryActionColor;
+
+        const botMessageBubbles = document.querySelectorAll(
+          ".bot-message-bubble"
+        );
+        botMessageBubbles.forEach((bubble) => {
+          bubble.style.backgroundColor = surfaceColor;
+          bubble.style.color = textColor;
+        });
+
+        const userMessageBubbles = document.querySelectorAll(
+          ".user-message-bubble"
+        );
+        userMessageBubbles.forEach((bubble) => {
+          bubble.style.backgroundColor = primaryActionColor;
+          bubble.style.color = surfaceColor;
+        });
+
+        const chatbotOptions = document.querySelectorAll(".chatbot-option");
+        chatbotOptions.forEach((option) => {
+          option.style.backgroundColor = surfaceColor;
+          option.style.color = textColor;
+          option.style.borderColor = secondaryActionColor;
+          option.style.borderWidth = "1px";
+          option.style.borderStyle = "solid";
+        });
+
         const milkSection = document.querySelector(
           "section:nth-of-type(2) > div > div"
         );
@@ -437,10 +1179,18 @@
         milkSection.style.borderWidth = "2px";
         milkSection.style.borderStyle = "solid";
 
-        const contactSection = document.querySelector(
+        const purchaseSection = document.querySelector(
           "section:nth-of-type(3) > div"
         );
-        contactSection.style.backgroundColor = surfaceColor;
+        purchaseSection.style.backgroundColor = "#9cb425";
+        purchaseSection.style.borderColor = secondaryActionColor;
+        purchaseSection.style.borderWidth = "2px";
+        purchaseSection.style.borderStyle = "solid";
+
+        const contactSection = document.querySelector(
+          "section:nth-of-type(4) > div"
+        );
+        contactSection.style.backgroundColor = "#9cb425";
         contactSection.style.borderColor = secondaryActionColor;
         contactSection.style.borderWidth = "2px";
         contactSection.style.borderStyle = "solid";
@@ -448,31 +1198,29 @@
         // Apply fonts with proper stacking
         const baseFontStack = "system-ui, -apple-system, sans-serif";
         const allTextElements = document.querySelectorAll(
-          "body, h1, h2, h3, h4, p, span, button"
+          "body, h1, h2, h3, h4, p, span, button, a"
         );
         allTextElements.forEach((el) => {
           el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
         });
 
         // Apply font sizes proportionally
-        document.getElementById("store-name").style.fontSize = `${
-          fontSize * 1.5
-        }px`;
-        document.getElementById("tagline").style.fontSize = `${
-          fontSize * 0.875
-        }px`;
-        document.getElementById("hero-title").style.fontSize = `${
-          fontSize * 3
-        }px`;
-        document.getElementById("hero-description").style.fontSize = `${
-          fontSize * 1.25
-        }px`;
-        document.getElementById("cta-button").style.fontSize = `${
-          fontSize * 1.125
-        }px`;
-        document.getElementById("products-title").style.fontSize = `${
-          fontSize * 2
-        }px`;
+        const isMobile = window.innerWidth < 768;
+        document.getElementById("store-name").style.fontSize = isMobile
+          ? `${fontSize * 1}px`
+          : `${fontSize * 1.5}px`;
+        document.getElementById("hero-title").style.fontSize = isMobile
+          ? `${fontSize * 1.875}px`
+          : `${fontSize * 3}px`;
+        document.getElementById("hero-description").style.fontSize = isMobile
+          ? `${fontSize}px`
+          : `${fontSize * 1.25}px`;
+        document.getElementById("cta-button").style.fontSize = isMobile
+          ? `${fontSize}px`
+          : `${fontSize * 1.125}px`;
+        document.getElementById("products-title").style.fontSize = isMobile
+          ? `${fontSize * 1.25}px`
+          : `${fontSize * 2}px`;
 
         productNames.forEach(
           (el) => (el.style.fontSize = `${fontSize * 1.5}px`)
@@ -493,6 +1241,29 @@
         badgeItems.forEach(
           (el) => (el.style.fontSize = `${fontSize * 0.875}px`)
         );
+        document.querySelector(".events-title").style.fontSize = isMobile
+          ? `${fontSize * 1.25}px`
+          : `${fontSize * 2}px`;
+        document.querySelector(".events-subtitle").style.fontSize = isMobile
+          ? `${fontSize}px`
+          : `${fontSize * 1.125}px`;
+
+        // Adjust slider height responsively
+        const sliderWrapper =
+          document.querySelector("#slider-container").parentElement;
+        sliderWrapper.style.height = isMobile ? "200px" : "400px";
+        document.querySelector(".gallery-title").style.fontSize = `${
+          fontSize * 1.875
+        }px`;
+        document.querySelector(".purchase-title").style.fontSize = `${
+          fontSize * 1.875
+        }px`;
+        document
+          .querySelectorAll(".purchase-label")
+          .forEach((el) => (el.style.fontSize = `${fontSize * 1.125}px`));
+        document
+          .querySelectorAll(".purchase-info")
+          .forEach((el) => (el.style.fontSize = `${fontSize}px`));
         document.querySelector(".contact-title").style.fontSize = `${
           fontSize * 1.875
         }px`;
@@ -502,6 +1273,12 @@
         document
           .querySelectorAll(".contact-info")
           .forEach((el) => (el.style.fontSize = `${fontSize}px`));
+        document.querySelector(".social-title").style.fontSize = `${
+          fontSize * 1.875
+        }px`;
+        document
+          .querySelectorAll(".social-link")
+          .forEach((el) => (el.style.fontSize = `${fontSize}px`));
         document.querySelector(".footer-text").style.fontSize = `${fontSize}px`;
         document.querySelector(".footer-subtext").style.fontSize = `${
           fontSize * 0.875
@@ -510,8 +1287,6 @@
         // Update text content
         document.getElementById("store-name").textContent =
           config.store_name || defaultConfig.store_name;
-        document.getElementById("tagline").textContent =
-          config.tagline || defaultConfig.tagline;
         document.getElementById("hero-title").textContent =
           config.hero_title || defaultConfig.hero_title;
         document.getElementById("hero-description").textContent =
@@ -521,6 +1296,276 @@
         document.getElementById("products-title").textContent =
           config.products_title || defaultConfig.products_title;
       }
+
+      // Mobile menu functionality
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let mobileMenuOpen = false;
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenuOpen = !mobileMenuOpen;
+        if (mobileMenuOpen) {
+          mobileMenu.classList.remove("mobile-menu-closed");
+          mobileMenu.classList.add("mobile-menu-open");
+          mobileMenuBtn.textContent = "✕";
+        } else {
+          mobileMenu.classList.remove("mobile-menu-open");
+          mobileMenu.classList.add("mobile-menu-closed");
+          mobileMenuBtn.textContent = "☰";
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenuOpen = false;
+          mobileMenu.classList.remove("mobile-menu-open");
+          mobileMenu.classList.add("mobile-menu-closed");
+          mobileMenuBtn.textContent = "☰";
+        });
+      });
+
+      // Slider functionality
+      let currentSlide = 0;
+      const totalSlides = 6;
+      const sliderContainer = document.getElementById("slider-container");
+      const sliderDots = document.querySelectorAll(".slider-dot");
+
+      function updateSlider() {
+        sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        sliderDots.forEach((dot, index) => {
+          if (index === currentSlide) {
+            dot.style.backgroundColor = "white";
+            dot.style.opacity = "1";
+          } else {
+            dot.style.backgroundColor = "white";
+            dot.style.opacity = "0.5";
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateSlider();
+      }
+
+      document
+        .getElementById("slider-next")
+        .addEventListener("click", nextSlide);
+      document
+        .getElementById("slider-prev")
+        .addEventListener("click", prevSlide);
+
+      sliderDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => goToSlide(index));
+      });
+
+      // Auto-advance slider every 5 seconds
+      setInterval(nextSlide, 5000);
+
+      // Initialize slider
+      updateSlider();
+
+      // Chatbot functionality
+      let chatbotOpen = false;
+
+      // Gallery functionality
+      const galleryImages = [
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(1).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(2).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(3).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(4).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(5).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(6).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(7).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(8).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(9).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(10).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(11).jpg",
+        "https://raw.githubusercontent.com/Frontendcreator2025/MatchacherMatchaShop/refs/heads/main/matcha%20(12).jpg",
+      ];
+
+      function openGalleryModal(index) {
+        const modal = document.getElementById("gallery-modal");
+        const img = document.getElementById("gallery-modal-img");
+        img.src = galleryImages[index];
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closeGalleryModal() {
+        const modal = document.getElementById("gallery-modal");
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }
+
+      const chatbotResponses = {
+        productos: {
+          message:
+            "��Tenemos una gran variedad! ���\n\n���� Chocolates de matcha\n🍦 Helados cremosos\n🍰 Pasteles gourmet\n🧁 Cupcakes deliciosos\n🍬 Caramelos de matcha\n🥣 Cereales energéticos\n🍵 Tés premium\n🥛 Leches de matcha\n\n¿Te gustaría saber más de algún producto en particular?",
+          options: ["🏠 Menú principal"],
+        },
+        contacto: {
+          message:
+            "📞 Aquí está toda nuestra información de contacto:\n\n📧 Email: hola@matchacher.com\n\n📱 WhatsApp: 56 1067 7516\n\n��� Dirección:\nToltecas 166\nSan Pedro de los Pinos\nCDMX 01180\n\n¡Contáctanos cuando quieras! 😊",
+          options: ["🏠 Menú principal"],
+        },
+        compra: {
+          message:
+            "💳 Información de compra:\n\n💰 Precio: Comercio Justo\n\n💳 Pago:\n- Efectivo\n- Transferencia NU\n- CLABE interbancaria\n\n🚴 Entrega:\n- En bicicleta a domicilio\n- Punto medio en metro\n\n¡Comprar es fácil y sustentable! 🌱",
+          options: ["🏠 Menú principal"],
+        },
+        horario: {
+          message:
+            "🕐 Nuestros horarios de atención son:\n\nLunes a Viernes: 9:00 AM - 7:00 PM\nS��bados: 10:00 AM - 6:00 PM\nDomingos: 10:00 AM - 3:00 PM\n\n¡Te esperamos! 🍵",
+          options: ["🏠 Menú principal"],
+        },
+        menu: {
+          message: "¿En qué puedo ayudarte? 😊",
+          options: [
+            "���️ Ver productos",
+            "💳 Cómo comprar",
+            "📞 Información de contacto",
+            "��� Horarios de atención",
+          ],
+        },
+      };
+
+      function addBotMessage(text) {
+        const messagesContainer = document.getElementById("chatbot-messages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "bot-message mb-3 flex gap-2";
+        messageDiv.innerHTML = `
+        <span class="text-xl">🍵</span>
+        <div class="bot-message-bubble rounded-2xl rounded-tl-none px-4 py-2 max-w-xs">
+          <p class="bot-message-text font-body text-sm" style="white-space: pre-line;">${text}</p>
+        </div>
+      `;
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Apply colors to new message
+        const newBubble = messageDiv.querySelector(".bot-message-bubble");
+        if (window.elementSdk && window.elementSdk.config) {
+          const config = window.elementSdk.config;
+          const surfaceColor =
+            config.surface_color || defaultConfig.surface_color;
+          const textColor = config.text_color || defaultConfig.text_color;
+          newBubble.style.backgroundColor = surfaceColor;
+          newBubble.style.color = textColor;
+        }
+      }
+
+      function addUserMessage(text) {
+        const messagesContainer = document.getElementById("chatbot-messages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "user-message mb-3 flex gap-2 justify-end";
+        messageDiv.innerHTML = `
+        <div class="user-message-bubble rounded-2xl rounded-tr-none px-4 py-2 max-w-xs">
+          <p class="font-body text-sm">${text}</p>
+        </div>
+      `;
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Apply colors to new message
+        const newBubble = messageDiv.querySelector(".user-message-bubble");
+        if (window.elementSdk && window.elementSdk.config) {
+          const config = window.elementSdk.config;
+          const primaryActionColor =
+            config.primary_action_color || defaultConfig.primary_action_color;
+          const surfaceColor =
+            config.surface_color || defaultConfig.surface_color;
+          newBubble.style.backgroundColor = primaryActionColor;
+          newBubble.style.color = surfaceColor;
+        }
+      }
+
+      function updateChatOptions(options) {
+        const optionsContainer = document.getElementById("chatbot-options");
+        optionsContainer.innerHTML = "";
+
+        options.forEach((optionText) => {
+          const button = document.createElement("button");
+          button.className =
+            "chatbot-option w-full text-left px-4 py-2 rounded-lg font-body text-sm transition-all hover:scale-105";
+          button.textContent = optionText;
+
+          // Apply colors
+          if (window.elementSdk && window.elementSdk.config) {
+            const config = window.elementSdk.config;
+            const surfaceColor =
+              config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const secondaryActionColor =
+              config.secondary_action_color ||
+              defaultConfig.secondary_action_color;
+            button.style.backgroundColor = surfaceColor;
+            button.style.color = textColor;
+            button.style.borderColor = secondaryActionColor;
+            button.style.borderWidth = "1px";
+            button.style.borderStyle = "solid";
+          }
+
+          button.addEventListener("click", () => {
+            handleOptionClick(optionText);
+          });
+
+          optionsContainer.appendChild(button);
+        });
+      }
+
+      function handleOptionClick(optionText) {
+        addUserMessage(optionText);
+
+        let responseKey = "";
+        if (optionText.includes("productos")) responseKey = "productos";
+        else if (optionText.includes("comprar")) responseKey = "compra";
+        else if (optionText.includes("contacto")) responseKey = "contacto";
+        else if (optionText.includes("Horarios")) responseKey = "horario";
+        else if (optionText.includes("Menú principal")) responseKey = "menu";
+
+        if (responseKey && chatbotResponses[responseKey]) {
+          setTimeout(() => {
+            addBotMessage(chatbotResponses[responseKey].message);
+            updateChatOptions(chatbotResponses[responseKey].options);
+          }, 500);
+        }
+      }
+
+      document
+        .getElementById("chatbot-toggle")
+        .addEventListener("click", () => {
+          chatbotOpen = !chatbotOpen;
+          const chatbotWindow = document.getElementById("chatbot-window");
+          if (chatbotOpen) {
+            chatbotWindow.style.transform = "scale(1)";
+          } else {
+            chatbotWindow.style.transform = "scale(0)";
+          }
+        });
+
+      document.getElementById("chatbot-close").addEventListener("click", () => {
+        chatbotOpen = false;
+        document.getElementById("chatbot-window").style.transform = "scale(0)";
+      });
+
+      document.querySelectorAll(".chatbot-option").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          const option = e.target.getAttribute("data-option");
+          handleOptionClick(e.target.textContent);
+        });
+      });
 
       function mapToCapabilities(config) {
         return {
@@ -617,7 +1662,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9b1656ee2238d2eb',t:'MTc2NjMwOTIwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9b4d669e1306eef2',t:'MTc2Njg4NjU2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
